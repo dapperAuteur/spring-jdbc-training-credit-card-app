@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+	<context:component-scan
+		base-package="com.intraedge.spring.creditcardapp.*"></context:component-scan>
+	<context:annotation-config></context:annotation-config>
+	<bean
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		name="dataSource" p:driverClassName="com.mysql.jdbc.Driver"
+		p:url="jdbc:mysql://localhost/mydb" p:username="user"
+		p:password="password" />
+
+	<bean class="org.springframework.jdbc.core.JdbcTemplate"
+		name="jdbcTemplate" p:dataSource-ref="dataSource" />
+	<bean
+		class="com.intraedge.spring.creditcardapp.model.CreditCardApplication"
+		name="app1" p:creditScore="680" p:jobTitle="Javascript Developer"
+		p:income="75000" p:firstName="Marty" p:lastName="Saybrook" />
+	<bean
+		class="com.intraedge.spring.creditcardapp.model.CreditCardApplication"
+		name="app2" p:creditScore="790" p:jobTitle="Singer" p:income="2425000"
+		p:firstName="Diana" p:lastName="Ross" />
+	<bean
+		class="com.intraedge.spring.creditcardapp.model.CreditCardApplication"
+		name="app3" p:creditScore="603" p:jobTitle="Bum" p:income="24250"
+		p:firstName="Michael" p:lastName="Meyers" />
+</beans>
